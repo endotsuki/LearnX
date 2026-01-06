@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { Plus, Users, BookOpen, BarChart3, Bell } from 'lucide-react';
 import { mockClasses, mockUsers, mockAnnouncements } from '@/data/mock';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { ClassCard } from '@/components/dashboard/ClassCard';
@@ -8,6 +7,7 @@ import type { User } from '@/types';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { IconBell, IconBook, IconChartBar, IconPlus, IconUsers } from '@tabler/icons-react';
 
 export default function AdminDashboard() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -71,7 +71,7 @@ export default function AdminDashboard() {
         <StatCard
           label='Total Students'
           value={totalStudents}
-          icon={<Users size={24} />}
+          icon={<IconUsers size={24} />}
           change={12}
           changeLabel='from last month'
           trend='up'
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
         <StatCard
           label='Total Teachers'
           value={totalTeachers}
-          icon={<BookOpen size={24} />}
+          icon={<IconBook size={24} />}
           change={5}
           changeLabel='from last month'
           trend='up'
@@ -89,7 +89,7 @@ export default function AdminDashboard() {
         <StatCard
           label='Active Classes'
           value={totalClasses}
-          icon={<BarChart3 size={24} />}
+          icon={<IconChartBar size={24} />}
           change={2}
           changeLabel='new this term'
           trend='up'
@@ -98,7 +98,7 @@ export default function AdminDashboard() {
         <StatCard
           label='Announcements'
           value={mockAnnouncements.length}
-          icon={<Bell size={24} />}
+          icon={<IconBell size={24} />}
           changeLabel='pending reviews'
           color='orange'
         />
@@ -114,8 +114,8 @@ export default function AdminDashboard() {
               <p className='text-sm text-gray-600 dark:text-gray-400'>{mockClasses.length} active classes</p>
             </div>
 
-            <Button variant='glass'>
-              <Plus size={18} />
+            <Button variant='outline' className='flex items-center gap-2 px-4' onClick={() => navigate('/admin/classes/new')}>
+              <IconPlus size={18} />
               New Class
             </Button>
           </div>
@@ -136,7 +136,7 @@ export default function AdminDashboard() {
         >
           <div className='mb-6 flex items-center justify-between'>
             <h2 className='text-xl font-bold text-gray-900 dark:text-white'>Announcements</h2>
-            <Bell size={20} className='text-blue-500' />
+            <IconBell size={20} className='text-blue-500' />
           </div>
 
           <div className='space-y-4'>

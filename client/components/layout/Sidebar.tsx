@@ -1,10 +1,21 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { LayoutDashboard, BarChart3, Users, BookOpen, FileText, Settings, LogOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { UserRole } from '@/types';
 import { useApp } from '@/context/AppContext';
 import { Button } from '../ui/button';
 import { Avatar, AvatarImage } from '../ui/avatar';
+import {
+  IconBook,
+  IconChartBar,
+  IconChartBarPopular,
+  IconChevronLeft,
+  IconChevronRight,
+  IconFileText,
+  IconLayoutDashboard,
+  IconLogout,
+  IconSettings2,
+  IconUsers,
+} from '@tabler/icons-react';
 
 interface SidebarProps {
   userRole: UserRole;
@@ -17,25 +28,25 @@ interface SidebarProps {
 
 const navItems: Record<UserRole, Array<{ label: string; icon: any; path: string }>> = {
   admin: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/admin' },
-    { label: 'Classes', icon: BookOpen, path: '/admin/classes' },
-    { label: 'Users', icon: Users, path: '/admin/users' },
-    { label: 'Reports', icon: BarChart3, path: '/admin/reports' },
-    { label: 'Settings', icon: Settings, path: '/admin/settings' },
+    { label: 'Dashboard', icon: IconLayoutDashboard, path: '/admin' },
+    { label: 'Classes', icon: IconBook, path: '/admin/classes' },
+    { label: 'Users', icon: IconUsers, path: '/admin/users' },
+    { label: 'Reports', icon: IconChartBar, path: '/admin/reports' },
+    { label: 'Settings', icon: IconSettings2, path: '/admin/settings' },
   ],
   teacher: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/teacher' },
-    { label: 'My Classes', icon: BookOpen, path: '/teacher/classes' },
-    { label: 'Assignments', icon: FileText, path: '/teacher/assignments' },
-    { label: 'Grades', icon: BarChart3, path: '/teacher/grades' },
-    { label: 'Settings', icon: Settings, path: '/teacher/settings' },
+    { label: 'Dashboard', icon: IconLayoutDashboard, path: '/teacher' },
+    { label: 'My Classes', icon: IconBook, path: '/teacher/classes' },
+    { label: 'Assignments', icon: IconFileText, path: '/teacher/assignments' },
+    { label: 'Grades', icon: IconChartBarPopular, path: '/teacher/grades' },
+    { label: 'Settings', icon: IconSettings2, path: '/teacher/settings' },
   ],
   student: [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/student' },
-    { label: 'Classes', icon: BookOpen, path: '/student/classes' },
-    { label: 'Assignments', icon: FileText, path: '/student/assignments' },
-    { label: 'Grades', icon: BarChart3, path: '/student/grades' },
-    { label: 'Settings', icon: Settings, path: '/student/settings' },
+    { label: 'Dashboard', icon: IconLayoutDashboard, path: '/student' },
+    { label: 'Classes', icon: IconBook, path: '/student/classes' },
+    { label: 'Assignments', icon: IconFileText, path: '/student/assignments' },
+    { label: 'Grades', icon: IconChartBarPopular, path: '/student/grades' },
+    { label: 'Settings', icon: IconSettings2, path: '/student/settings' },
   ],
 };
 
@@ -89,9 +100,9 @@ export function Sidebar({ userRole, userName, userAvatar, onLogout, isOpen = tru
             className='flex-shrink-0 rounded-lg p-1.5 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800'
           >
             {isOpen ? (
-              <ChevronLeft size={20} className='text-slate-600 dark:text-slate-400' />
+              <IconChevronLeft size={20} className='text-slate-600 dark:text-slate-400' />
             ) : (
-              <ChevronRight size={20} className='text-slate-600 dark:text-slate-400' />
+              <IconChevronRight size={20} className='text-slate-600 dark:text-slate-400' />
             )}
           </Button>
         </div>
@@ -180,7 +191,7 @@ export function Sidebar({ userRole, userName, userAvatar, onLogout, isOpen = tru
           className={`rounded-xl ${!isOpen ? 'justify-center' : ''}`}
           title={!isOpen ? translations.logout : undefined}
         >
-          <LogOut size={18} className='flex-shrink-0' />
+          <IconLogout size={18} className='flex-shrink-0' />
           {isOpen && (
             <motion.span
               initial={{ opacity: 0, width: 0 }}

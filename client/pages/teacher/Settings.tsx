@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import type { User } from '@/types';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
-import { Bell, Lock, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { IconBell, IconEye, IconEyeOff, IconLock } from '@tabler/icons-react';
 
 export default function TeacherSettings() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -90,7 +90,7 @@ export default function TeacherSettings() {
             className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
             <div className='mb-6 flex items-center gap-2'>
-              <Lock size={24} className='text-blue-600 dark:text-blue-400' />
+              <IconLock size={24} className='text-blue-600 dark:text-blue-400' />
               <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>{translations.changePassword}</h2>
             </div>
 
@@ -107,7 +107,7 @@ export default function TeacherSettings() {
                     onClick={() => setShowPassword(!showPassword)}
                     className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    {showPassword ? <IconEyeOff size={18} /> : <IconEye size={18} />}
                   </button>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function TeacherSettings() {
             className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
             <div className='mb-4 flex items-center gap-2'>
-              <Bell size={20} className='text-blue-600 dark:text-blue-400' />
+              <IconBell size={20} className='text-blue-600 dark:text-blue-400' />
               <h3 className='text-lg font-bold text-gray-900 dark:text-white'>{translations.notifications}</h3>
             </div>
             <div className='space-y-3'>

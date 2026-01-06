@@ -5,7 +5,6 @@ import type { User, Grade, Class } from '@/types';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { getClassesByTeacher, getClassGrades, getStudentClasses } from '@/data/mock';
-import { ChevronDown } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function TeacherGrades() {

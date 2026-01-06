@@ -6,9 +6,9 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { mockClasses } from '@/data/mock';
 import { ClassCard } from '@/components/dashboard/ClassCard';
-import { Plus, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { IconPlus, IconSearch } from '@tabler/icons-react';
 
 export default function AdminClasses() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -54,7 +54,7 @@ export default function AdminClasses() {
         className='mb-8 mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'
       >
         <div className='relative w-full sm:w-96'>
-          <Search size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' />
+          <IconSearch size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' />
           <Input
             type='text'
             placeholder={translations.search}
@@ -64,7 +64,7 @@ export default function AdminClasses() {
           />
         </div>
         <Button variant='secondary'>
-          <Plus size={18} />
+          <IconPlus size={18} />
           {translations.createNewClass}
         </Button>
       </motion.div>

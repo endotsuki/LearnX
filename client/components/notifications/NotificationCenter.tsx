@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bell, X, Check, Trash2 } from 'lucide-react';
 import { useNotification } from '@/context/NotificationContext';
 import { NotificationService } from '@/services/notificationService';
 import { useApp } from '@/context/AppContext';
 import { Button } from '../ui/button';
+import { IconBell, IconTrash, IconX } from '@tabler/icons-react';
 
 interface NotificationCenterProps {
   userId: string;
@@ -70,7 +70,7 @@ export function NotificationCenter({ userId }: NotificationCenterProps) {
         onClick={() => setIsOpen(!isOpen)}
         className='relative p-2 text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
       >
-        <Bell size={20} />
+        <IconBell size={20} />
         {unreadCount > 0 && (
           <motion.span
             initial={{ scale: 0 }}
@@ -117,7 +117,7 @@ export function NotificationCenter({ userId }: NotificationCenterProps) {
                     onClick={() => setIsOpen(false)}
                     className='rounded p-1 transition-colors hover:bg-gray-100 dark:hover:bg-slate-700'
                   >
-                    <X size={18} className='text-gray-500' />
+                    <IconX size={18} className='text-gray-500' />
                   </button>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export function NotificationCenter({ userId }: NotificationCenterProps) {
                               }}
                               className='rounded p-1 transition-colors hover:bg-gray-300 dark:hover:bg-slate-600'
                             >
-                              <Trash2 size={14} className='text-gray-500 dark:text-gray-400' />
+                              <IconTrash size={14} className='text-gray-500 dark:text-gray-400' />
                             </motion.button>
                           </div>
                         </div>
@@ -172,7 +172,7 @@ export function NotificationCenter({ userId }: NotificationCenterProps) {
                   </div>
                 ) : (
                   <div className='p-8 text-center text-gray-500 dark:text-gray-400'>
-                    <Bell size={32} className='mx-auto mb-2 opacity-50' />
+                    <IconBell size={32} className='mx-auto mb-2 opacity-50' />
                     <p className='text-sm'>No notifications yet</p>
                   </div>
                 )}

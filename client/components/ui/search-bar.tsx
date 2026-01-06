@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, X, BookOpen, FileText, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { mockClasses, mockAssignments, mockUsers } from '@/data/mock';
 import { Input } from './input';
 import { Button } from './button';
+import { IconBook, IconFileText, IconSearch, IconUsers, IconX } from '@tabler/icons-react';
 
 interface SearchResult {
   id: string;
@@ -46,7 +46,7 @@ export function SearchBar({ placeholder = 'Search classes, assignments, users...
           type: 'class',
           title: cls.name,
           description: cls.name,
-          icon: <BookOpen size={16} />,
+          icon: <IconBook size={16} />,
           path: `/class/${cls.id}`,
         });
       }
@@ -60,7 +60,7 @@ export function SearchBar({ placeholder = 'Search classes, assignments, users...
           type: 'assignment',
           title: assignment.title,
           description: assignment.description.substring(0, 50) + '...',
-          icon: <FileText size={16} />,
+          icon: <IconFileText size={16} />,
           path: `/assignment/${assignment.id}`,
         });
       }
@@ -74,7 +74,7 @@ export function SearchBar({ placeholder = 'Search classes, assignments, users...
           type: 'user',
           title: user.name,
           description: `${user.role} · ${user.department}`,
-          icon: <Users size={16} />,
+          icon: <IconUsers size={16} />,
         });
       }
     });
@@ -127,7 +127,7 @@ export function SearchBar({ placeholder = 'Search classes, assignments, users...
   return (
     <div className='relative max-w-md flex-1'>
       <div className='relative'>
-        <Search
+        <IconSearch
           size={18}
           className='pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-400 dark:text-gray-500'
         />
@@ -149,7 +149,7 @@ export function SearchBar({ placeholder = 'Search classes, assignments, users...
             onClick={clearSearch}
             className='absolute right-3 top-1/2 h-auto -translate-y-1/2 transform cursor-pointer rounded p-1 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-700 dark:text-gray-500 dark:hover:bg-slate-700 dark:hover:text-gray-200'
           >
-            <X size={16} />
+            <IconX size={16} />
           </Button>
         )}
       </div>

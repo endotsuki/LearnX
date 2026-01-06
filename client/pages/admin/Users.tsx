@@ -5,11 +5,11 @@ import type { User } from '@/types';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { mockUsers } from '@/data/mock';
-import { Plus, Search, MoreVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import { Avatar } from '@/components/ui/avatar';
 import { AvatarImage } from '@radix-ui/react-avatar';
+import { IconDotsVertical, IconPlus, IconSearch } from '@tabler/icons-react';
 
 export default function AdminUsers() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -104,7 +104,7 @@ export default function AdminUsers() {
         className='mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'
       >
         <div className='relative w-full sm:w-96'>
-          <Search size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' />
+          <IconSearch size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' />
           <input
             type='text'
             placeholder={translations.search}
@@ -126,7 +126,7 @@ export default function AdminUsers() {
             </SelectContent>
           </Select>
           <Button variant='secondary'>
-            <Plus size={18} />
+            <IconPlus size={18} />
             Add User
           </Button>
         </div>
@@ -178,9 +178,9 @@ export default function AdminUsers() {
                     <td className='px-6 py-4 text-gray-600 dark:text-gray-400'>{user.department}</td>
                     <td className='px-6 py-4 text-gray-600 dark:text-gray-400'>{user.phone}</td>
                     <td className='px-6 py-4'>
-                      <button className='text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'>
-                        <MoreVertical size={18} />
-                      </button>
+                      <Button variant='ghost'>
+                        <IconDotsVertical size={18} />
+                      </Button>
                     </td>
                   </motion.tr>
                 ))}

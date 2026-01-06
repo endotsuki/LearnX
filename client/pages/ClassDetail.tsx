@@ -5,10 +5,10 @@ import type { User, Class, Assignment } from '@/types';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { mockClasses, getClassAssignments, getStudentsInClass } from '@/data/mock';
-import { ArrowLeft, Users, BookOpen, Bell } from 'lucide-react';
 import { StatusBadge } from '@/components/dashboard/StatusBadge';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { IconArrowLeft, IconBell, IconBook, IconUsers } from '@tabler/icons-react';
 
 export default function ClassDetail() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -54,7 +54,7 @@ export default function ClassDetail() {
           onClick={() => navigate(-1)}
           className='mb-4 flex items-center gap-2 font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300'
         >
-          <ArrowLeft size={18} />
+          <IconArrowLeft size={18} />
           {translations.back}
         </button>
         <h1 className='text-4xl font-bold text-gray-900 dark:text-white'>{classData.name}</h1>
@@ -80,17 +80,17 @@ export default function ClassDetail() {
           </div>
           <div className='ml-8 grid grid-cols-3 gap-6'>
             <div className='text-center'>
-              <Users size={24} className='mx-auto mb-2 text-blue-600 dark:text-blue-400' />
+              <IconUsers size={24} className='mx-auto mb-2 text-blue-600 dark:text-blue-400' />
               <p className='text-sm font-medium text-gray-700 dark:text-gray-300'>{classData.studentCount}</p>
               <p className='text-xs text-gray-500 dark:text-gray-500'>Students</p>
             </div>
             <div className='text-center'>
-              <BookOpen size={24} className='mx-auto mb-2 text-purple-600 dark:text-purple-400' />
+              <IconBook size={24} className='mx-auto mb-2 text-purple-600 dark:text-purple-400' />
               <p className='text-sm font-medium text-gray-700 dark:text-gray-300'>{assignments.length}</p>
               <p className='text-xs text-gray-500 dark:text-gray-500'>Assignments</p>
             </div>
             <div className='text-center'>
-              <Bell size={24} className='mx-auto mb-2 text-orange-600 dark:text-orange-400' />
+              <IconBell size={24} className='mx-auto mb-2 text-orange-600 dark:text-orange-400' />
               <p className='text-sm font-medium text-gray-700 dark:text-gray-300'>3</p>
               <p className='text-xs text-gray-500 dark:text-gray-500'>Announcements</p>
             </div>

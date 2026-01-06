@@ -81,7 +81,8 @@ export const mockClasses: Class[] = [
     studentCount: 32,
     schedule: 'Tue, Thu - 2:00 PM',
     room: 'Room 205',
-    image: 'https://images.unsplash.com/photo-1507842217343-583f20270319?w=600&h=400&fit=crop',
+    image:
+      'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=600&h=400&fit=crop',
   },
   {
     id: 'class3',

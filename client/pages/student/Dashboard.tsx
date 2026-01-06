@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { User } from '@/types';
 import { AppLayout } from '@/components/layout/AppLayout';
-import { BookOpen, FileText } from 'lucide-react';
 import { getStudentClasses, getStudentAssignments } from '@/data/mock';
 import { ClassCard } from '@/components/dashboard/ClassCard';
 import { DashboardCard } from '@/components/dashboard/DashboardCard';
 import { StatusBadge } from '@/components/dashboard/StatusBadge';
+import { IconBook, IconChartBar, IconFileText } from '@tabler/icons-react';
+import { Icon } from '@radix-ui/react-select';
 
 export default function StudentDashboard() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -52,19 +53,19 @@ export default function StudentDashboard() {
         <DashboardCard
           title='Classes Enrolled'
           value={enrolledClasses.length}
-          icon={<BookOpen size={24} className='text-blue-600' />}
+          icon={<IconBook size={24} className='text-blue-600' />}
           variant='stat'
         />
         <DashboardCard
           title='Pending Assignments'
           value={upcomingAssignments.length}
-          icon={<FileText size={24} className='text-purple-600' />}
+          icon={<IconFileText size={24} className='text-purple-600' />}
           variant='stat'
         />
         <DashboardCard
           title='Overall GPA'
           value='3.85'
-          icon={<span className='text-2xl'>📊</span>}
+          icon={<IconChartBar size={24} className='text-green-600' />}
           subtitle='Based on latest grades'
           variant='stat'
         />
@@ -78,7 +79,7 @@ export default function StudentDashboard() {
             enrolledClasses.map((classItem) => <ClassCard key={classItem.id} classData={classItem} />)
           ) : (
             <div className='col-span-full py-12 text-center'>
-              <BookOpen size={48} className='mx-auto mb-4 text-gray-400 dark:text-gray-600' />
+              <IconBook size={48} className='mx-auto mb-4 text-gray-400 dark:text-gray-600' />
               <p className='text-gray-600 dark:text-gray-400'>No classes enrolled yet</p>
             </div>
           )}
@@ -113,7 +114,7 @@ export default function StudentDashboard() {
             ))
           ) : (
             <div className='py-8 text-center'>
-              <FileText size={48} className='mx-auto mb-4 text-gray-400 dark:text-gray-600' />
+              <IconFileText size={48} className='mx-auto mb-4 text-gray-400 dark:text-gray-600' />
               <p className='text-gray-600 dark:text-gray-400'>No upcoming assignments</p>
             </div>
           )}

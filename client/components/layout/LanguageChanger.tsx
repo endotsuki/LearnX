@@ -1,8 +1,8 @@
-import { Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Button } from '../ui/button';
+import { IconLanguage } from '@tabler/icons-react';
 
 export function LanguageChanger() {
   const { language, setLanguage } = useApp();
@@ -12,7 +12,7 @@ export function LanguageChanger() {
     <div className='relative'>
       {/* Trigger Button */}
       <Button variant='outline' size='icon' onClick={() => setShowLanguageMenu((prev) => !prev)}>
-        <Globe size={20} />
+        <IconLanguage size={20} />
       </Button>
 
       <AnimatePresence>

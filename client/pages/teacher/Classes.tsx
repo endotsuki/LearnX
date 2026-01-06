@@ -6,8 +6,8 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { getClassesByTeacher } from '@/data/mock';
 import { ClassCard } from '@/components/dashboard/ClassCard';
-import { Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { IconPlus } from '@tabler/icons-react';
 
 export default function TeacherClasses() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -44,7 +44,7 @@ export default function TeacherClasses() {
 
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className='mb-6 mt-6 flex justify-end'>
         <Button variant='secondary'>
-          <Plus size={18} />
+          <IconPlus size={18} />
           {translations.createClass}
         </Button>
       </motion.div>

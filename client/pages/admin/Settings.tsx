@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import type { User } from "@/types";
-import { AppLayout } from "@/components/layout/AppLayout";
-import { useApp } from "@/context/AppContext";
-import { Bell, Lock, Eye, EyeOff, Shield, Database } from "lucide-react";
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { User } from '@/types';
+import { AppLayout } from '@/components/layout/AppLayout';
+import { useApp } from '@/context/AppContext';
+import { IconBell, IconDatabase, IconEye, IconEyeOff, IconLock, IconShield } from '@tabler/icons-react';
 
 export default function AdminSettings() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -13,81 +13,69 @@ export default function AdminSettings() {
   const { translations, theme, toggleTheme, language, setLanguage } = useApp();
 
   useEffect(() => {
-    const user = localStorage.getItem("currentUser");
+    const user = localStorage.getItem('currentUser');
     if (user) {
       const parsedUser = JSON.parse(user);
       setCurrentUser(parsedUser);
     } else {
-      navigate("/");
+      navigate('/');
     }
   }, [navigate]);
 
   if (!currentUser) return null;
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    navigate("/");
+    localStorage.removeItem('currentUser');
+    navigate('/');
   };
 
   return (
     <AppLayout user={currentUser} onLogout={handleLogout}>
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-          {translations.systemSettings}
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2">
-          {translations.manageSchool}
-        </p>
+        <h1 className='text-4xl font-bold text-gray-900 dark:text-white'>{translations.systemSettings}</h1>
+        <p className='mt-2 text-gray-600 dark:text-gray-400'>{translations.manageSchool}</p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+      <div className='mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3'>
         {/* Main Settings */}
-        <div className="lg:col-span-2 space-y-8">
+        <div className='space-y-8 lg:col-span-2'>
           {/* Account Settings */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-6"
+            className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              {translations.accountSettings}
-            </h2>
+            <h2 className='mb-6 text-2xl font-bold text-gray-900 dark:text-white'>{translations.accountSettings}</h2>
 
-            <div className="space-y-6">
+            <div className='space-y-6'>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {translations.profile}
-                </label>
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>{translations.profile}</label>
                 <input
-                  type="text"
+                  type='text'
                   value={currentUser.name}
                   readOnly
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className='w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {translations.emailAddress}
-                </label>
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>{translations.emailAddress}</label>
                 <input
-                  type="email"
+                  type='email'
                   value={currentUser.email}
                   readOnly
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className='w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Department
-                </label>
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>Department</label>
                 <input
-                  type="text"
+                  type='text'
                   value={currentUser.department}
                   readOnly
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className='w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                 />
               </div>
             </div>
@@ -98,61 +86,53 @@ export default function AdminSettings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-6"
+            className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Lock size={24} className="text-blue-600 dark:text-blue-400" />
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                {translations.changePassword}
-              </h2>
+            <div className='mb-6 flex items-center gap-2'>
+              <IconLock size={24} className='text-blue-600 dark:text-blue-400' />
+              <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>{translations.changePassword}</h2>
             </div>
 
-            <div className="space-y-4">
+            <div className='space-y-4'>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Current Password
-                </label>
-                <div className="relative">
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>Current Password</label>
+                <div className='relative'>
                   <input
-                    type={showPassword ? "text" : "password"}
-                    placeholder="••••••••"
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder='••••••••'
+                    className='w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                   />
                   <button
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                    className='absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300'
                   >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    {showPassword ? <IconEyeOff size={18} /> : <IconEye size={18} />}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  New Password
-                </label>
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>New Password</label>
                 <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  type='password'
+                  placeholder='••••••••'
+                  className='w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Confirm Password
-                </label>
+                <label className='mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300'>Confirm Password</label>
                 <input
-                  type="password"
-                  placeholder="••••••••"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  type='password'
+                  placeholder='••••••••'
+                  className='w-full rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 dark:border-slate-700 dark:bg-slate-700 dark:text-white'
                 />
               </div>
 
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium mt-2"
+                className='mt-2 w-full rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600'
               >
                 {translations.changePassword}
               </motion.button>
@@ -164,37 +144,35 @@ export default function AdminSettings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-6"
+            className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Shield size={24} className="text-green-600 dark:text-green-400" />
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                System Security
-              </h2>
+            <div className='mb-6 flex items-center gap-2'>
+              <IconShield size={24} className='text-green-600 dark:text-green-400' />
+              <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>System Security</h2>
             </div>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-700 dark:text-gray-300">Two-Factor Authentication</span>
-                <div className="w-12 h-6 bg-green-400 rounded-full relative cursor-pointer">
-                  <div className="w-5 h-5 bg-white rounded-full absolute right-0.5 top-0.5"></div>
+            <div className='space-y-4'>
+              <div className='flex items-center justify-between'>
+                <span className='text-sm text-gray-700 dark:text-gray-300'>Two-Factor Authentication</span>
+                <div className='relative h-6 w-12 cursor-pointer rounded-full bg-green-400'>
+                  <div className='absolute right-0.5 top-0.5 h-5 w-5 rounded-full bg-white'></div>
                 </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-700 dark:text-gray-300">API Key Management</span>
+              <div className='flex items-center justify-between'>
+                <span className='text-sm text-gray-700 dark:text-gray-300'>API Key Management</span>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="text-sm px-3 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"
+                  className='rounded-lg border border-gray-200 px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:border-slate-700 dark:text-gray-300 dark:hover:bg-slate-700'
                 >
                   Manage
                 </motion.button>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-700 dark:text-gray-300">System Backup</span>
+              <div className='flex items-center justify-between'>
+                <span className='text-sm text-gray-700 dark:text-gray-300'>System Backup</span>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="text-sm px-3 py-1 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700"
+                  className='rounded-lg border border-gray-200 px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:border-slate-700 dark:text-gray-300 dark:hover:bg-slate-700'
                 >
                   Backup Now
                 </motion.button>
@@ -207,69 +185,57 @@ export default function AdminSettings() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-6"
+            className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
-            <div className="flex items-center gap-2 mb-6">
-              <Database size={24} className="text-purple-600 dark:text-purple-400" />
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Database
-              </h2>
+            <div className='mb-6 flex items-center gap-2'>
+              <IconDatabase size={24} className='text-purple-600 dark:text-purple-400' />
+              <h2 className='text-2xl font-bold text-gray-900 dark:text-white'>Database</h2>
             </div>
-            <div className="space-y-4">
+            <div className='space-y-4'>
               <div>
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">Database Status</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">Connected</span>
+                <p className='mb-2 text-sm text-gray-700 dark:text-gray-300'>Database Status</p>
+                <div className='flex items-center gap-2'>
+                  <div className='h-3 w-3 rounded-full bg-green-500'></div>
+                  <span className='text-sm font-medium text-gray-900 dark:text-white'>Connected</span>
                 </div>
               </div>
               <div>
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">Last Backup</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">2025-01-10 03:30 AM</p>
+                <p className='mb-2 text-sm text-gray-700 dark:text-gray-300'>Last Backup</p>
+                <p className='text-sm text-gray-600 dark:text-gray-400'>2025-01-10 03:30 AM</p>
               </div>
             </div>
           </motion.div>
         </div>
 
         {/* Sidebar Settings */}
-        <div className="space-y-6">
+        <div className='space-y-6'>
           {/* Notifications Settings */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 p-6"
+            className='rounded-lg border border-gray-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-800'
           >
-            <div className="flex items-center gap-2 mb-4">
-              <Bell size={20} className="text-blue-600 dark:text-blue-400" />
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {translations.notifications}
-              </h3>
+            <div className='mb-4 flex items-center gap-2'>
+              <IconBell size={20} className='text-blue-600 dark:text-blue-400' />
+              <h3 className='text-lg font-bold text-gray-900 dark:text-white'>{translations.notifications}</h3>
             </div>
-            <div className="space-y-3">
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" defaultChecked className="w-4 h-4 rounded" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  System Alerts
-                </span>
+            <div className='space-y-3'>
+              <label className='flex cursor-pointer items-center gap-3'>
+                <input type='checkbox' defaultChecked className='h-4 w-4 rounded' />
+                <span className='text-sm text-gray-700 dark:text-gray-300'>System Alerts</span>
               </label>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" defaultChecked className="w-4 h-4 rounded" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  User Activity
-                </span>
+              <label className='flex cursor-pointer items-center gap-3'>
+                <input type='checkbox' defaultChecked className='h-4 w-4 rounded' />
+                <span className='text-sm text-gray-700 dark:text-gray-300'>User Activity</span>
               </label>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" defaultChecked className="w-4 h-4 rounded" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  System Updates
-                </span>
+              <label className='flex cursor-pointer items-center gap-3'>
+                <input type='checkbox' defaultChecked className='h-4 w-4 rounded' />
+                <span className='text-sm text-gray-700 dark:text-gray-300'>System Updates</span>
               </label>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" defaultChecked className="w-4 h-4 rounded" />
-                <span className="text-sm text-gray-700 dark:text-gray-300">
-                  Security Alerts
-                </span>
+              <label className='flex cursor-pointer items-center gap-3'>
+                <input type='checkbox' defaultChecked className='h-4 w-4 rounded' />
+                <span className='text-sm text-gray-700 dark:text-gray-300'>Security Alerts</span>
               </label>
             </div>
           </motion.div>

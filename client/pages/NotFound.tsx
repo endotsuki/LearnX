@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Home } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import type { User } from '@/types';
+import { IconArrowRight, IconSmartHome } from '@tabler/icons-react';
 
 export default function NotFound() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -61,7 +61,7 @@ export default function NotFound() {
             onClick={() => navigate(-1)}
             className='flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-6 py-3 font-semibold backdrop-blur-md hover:bg-white/20'
           >
-            <ArrowLeft size={20} />
+            <IconArrowRight size={20} />
             Go Back
           </button>
 
@@ -70,7 +70,7 @@ export default function NotFound() {
               to={`/${currentUser.role}`}
               className='flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 font-semibold hover:from-blue-600 hover:to-purple-700'
             >
-              <Home size={20} />
+              <IconSmartHome size={20} />
               Go to Dashboard
             </Link>
           ) : (
@@ -78,7 +78,7 @@ export default function NotFound() {
               to='/'
               className='flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 font-semibold hover:from-blue-600 hover:to-purple-700'
             >
-              <Home size={20} />
+              <IconSmartHome size={20} />
               Go Home
             </Link>
           )}

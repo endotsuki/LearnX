@@ -1,4 +1,3 @@
-import { Moon, Sun } from 'lucide-react';
 import type { User } from '@/types';
 import { useApp } from '@/context/AppContext';
 import { NotificationCenter } from '@/components/notifications/NotificationCenter';
@@ -7,6 +6,7 @@ import { SearchBar } from '../ui/search-bar';
 import { useTranslations } from '@/hooks/useTranslations';
 import { Button } from '../ui/button';
 import { Avatar, AvatarImage } from '../ui/avatar';
+import { IconMoonStars, IconSunLow } from '@tabler/icons-react';
 
 interface NavbarProps {
   user: User;
@@ -36,7 +36,7 @@ export function Navbar({ user, sidebarOpen }: NavbarProps) {
               size='icon'
               title={theme === 'light' ? translations.darkMode : translations.lightMode}
             >
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === 'light' ? <IconMoonStars size={20} /> : <IconSunLow size={20} />}
             </Button>
 
             {/* Language Selector */}

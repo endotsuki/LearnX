@@ -6,9 +6,9 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { useApp } from '@/context/AppContext';
 import { getClassesByTeacher, getClassAssignments } from '@/data/mock';
 import { StatusBadge } from '@/components/dashboard/StatusBadge';
-import { Plus, Filter } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
+import { IconFilter, IconPlus } from '@tabler/icons-react';
 
 export default function TeacherAssignments() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -87,7 +87,7 @@ export default function TeacherAssignments() {
         className='mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center'
       >
         <div className='flex items-center gap-2'>
-          <Filter size={18} className='text-gray-500 dark:text-gray-400' />
+          <IconFilter size={18} className='text-gray-500 dark:text-gray-400' />
           <Select value={filter} onValueChange={(value) => setFilter(value as 'all' | 'published' | 'draft')}>
             <SelectTrigger className='w-auto'>
               <SelectValue />
@@ -100,7 +100,7 @@ export default function TeacherAssignments() {
           </Select>
         </div>
         <Button variant='secondary'>
-          <Plus size={18} />
+          <IconPlus size={18} />
           {translations.create} {translations.assignments}
         </Button>
       </motion.div>

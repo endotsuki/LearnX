@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Book } from 'lucide-react';
 import type { UserRole } from '@/types';
 import { mockUsers } from '@/data/mock';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
+import { IconBook, IconLock, IconMail, IconUser } from '@tabler/icons-react';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -19,19 +19,19 @@ export default function Login() {
     {
       value: 'admin',
       label: 'Admin',
-      icon: User,
+      icon: IconUser,
       description: 'Manage school & users',
     },
     {
       value: 'teacher',
       label: 'Teacher',
-      icon: Book,
+      icon: IconBook,
       description: 'Manage classes & grades',
     },
     {
       value: 'student',
       label: 'Student',
-      icon: Book,
+      icon: IconBook,
       description: 'View assignments & grades',
     },
   ];
@@ -99,7 +99,7 @@ export default function Login() {
         <motion.div variants={itemVariants} className='mb-8 text-center'>
           <div className='mb-4 flex justify-center'>
             <div className='rounded-full bg-gradient-to-br from-blue-600 to-purple-600 p-4'>
-              <Book className='h-8 w-8 text-white' />
+              <IconBook className='h-8 w-8 text-white' />
             </div>
           </div>
           <h1 className='mb-2 text-4xl font-bold text-white'>LearnX</h1>
@@ -148,7 +148,7 @@ export default function Login() {
               <motion.div variants={itemVariants}>
                 <label className='mb-2 block text-sm font-medium text-gray-300'>Email Address</label>
                 <div className='relative'>
-                  <Mail className='absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-500' />
+                  <IconMail className='absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-500' />
                   <Input
                     type='email'
                     value={email}
@@ -163,7 +163,7 @@ export default function Login() {
               <motion.div variants={itemVariants}>
                 <label className='mb-2 block text-sm font-medium text-gray-300'>Password</label>
                 <div className='relative'>
-                  <Lock className='absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-500' />
+                  <IconLock className='absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-500' />
                   <Input
                     type='password'
                     value={password}

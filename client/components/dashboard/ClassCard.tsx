@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { Users, Clock, MapPin } from 'lucide-react';
 import type { Class } from '@/types';
 import { Link } from 'react-router-dom';
-import { Avatar, AvatarImage } from '../ui/avatar';
+import { IconClock, IconMapPin, IconUsers } from '@tabler/icons-react';
 
 interface ClassCardProps {
   classData: Class;
@@ -33,11 +32,11 @@ export function ClassCard({ classData, variant = 'grid' }: ClassCardProps) {
 
               <div className='mt-3 flex gap-4 text-xs text-gray-500 dark:text-gray-400'>
                 <div className='flex items-center gap-1'>
-                  <Users size={14} />
+                  <IconUsers size={14} />
                   {classData.studentCount} students
                 </div>
                 <div className='flex items-center gap-1'>
-                  <Clock size={14} />
+                  <IconClock size={14} />
                   {classData.schedule}
                 </div>
               </div>
@@ -77,16 +76,16 @@ export function ClassCard({ classData, variant = 'grid' }: ClassCardProps) {
           </div>
           <div className='mt-4 space-y-2 border-t border-white/20 pt-4 dark:border-slate-700/50'>
             <div className='flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300'>
-              <Users size={16} className='text-gray-400 dark:text-gray-500' />
+              <IconUsers size={16} className='text-gray-400 dark:text-gray-500' />
               {classData.studentCount} students
             </div>
             <div className='flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300'>
-              <Clock size={16} className='text-gray-400 dark:text-gray-500' />
+              <IconClock size={16} className='text-gray-400 dark:text-gray-500' />
               {classData.schedule}
             </div>
             {classData.room && (
               <div className='flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300'>
-                <MapPin size={16} className='text-gray-400 dark:text-gray-500' />
+                <IconMapPin size={16} className='text-gray-400 dark:text-gray-500' />
                 {classData.room}
               </div>
             )}

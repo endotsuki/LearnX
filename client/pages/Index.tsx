@@ -1,30 +1,31 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Users, BookOpen, BarChart3, Zap, ArrowRight, Globe } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
+import { IconArrowRight, IconBolt, IconBook, IconChartBarPopular, IconUsers } from '@tabler/icons-react';
+import { LanguageChanger } from '@/components/layout/LanguageChanger';
 
 const features = [
   {
-    icon: Users,
+    icon: IconUsers,
     titleKey: 'roleBasedAccess',
     descKey: 'roleBasedAccessDesc',
     color: 'from-blue-400 to-blue-600',
   },
   {
-    icon: BookOpen,
+    icon: IconBook,
     titleKey: 'classManagement',
     descKey: 'classManagementDesc',
     color: 'from-purple-400 to-purple-600',
   },
   {
-    icon: BarChart3,
+    icon: IconChartBarPopular,
     titleKey: 'performanceAnalytics',
     descKey: 'performanceAnalyticsDesc',
     color: 'from-pink-400 to-pink-600',
   },
   {
-    icon: Zap,
+    icon: IconBolt,
     titleKey: 'realTimeUpdates',
     descKey: 'realTimeUpdatesDesc',
     color: 'from-green-400 to-green-600',
@@ -82,7 +83,7 @@ export default function Index() {
         >
           <div className='flex items-center gap-2'>
             <div className='rounded-full bg-white/20 p-2 backdrop-blur-md'>
-              <BookOpen size={28} />
+              <IconBook size={28} />
             </div>
             <span className='text-2xl font-bold'>LearnX</span>
           </div>
@@ -94,35 +95,7 @@ export default function Index() {
               {translations.signIn}
             </Link>
             <div className='relative'>
-              <button
-                onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                className='rounded-lg p-2 text-gray-300 transition-colors hover:bg-white/10'
-                title='Change Language'
-              >
-                <Globe size={20} />
-              </button>
-              {showLanguageMenu && (
-                <div className='absolute right-0 z-50 mt-2 w-40 rounded-lg border border-white/20 bg-slate-800 shadow-lg'>
-                  {[
-                    { code: 'en', label: 'English' },
-                    { code: 'km', label: 'ភាសាខ្មែរ' },
-                    { code: 'fr', label: 'Français' },
-                  ].map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => {
-                        setLanguage(lang.code as any);
-                        setShowLanguageMenu(false);
-                      }}
-                      className={`block w-full rounded px-4 py-2 text-left text-sm transition-colors ${
-                        language === lang.code ? 'bg-blue-600 text-white' : 'text-gray-300 hover:bg-white/10'
-                      }`}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              )}
+              <LanguageChanger />
             </div>
           </div>
         </motion.nav>
@@ -152,7 +125,7 @@ export default function Index() {
                 className='inline-flex items-center justify-center gap-2 rounded-xl bg-black/40 px-8 py-3 font-semibold text-white backdrop-blur-xl hover:bg-black/50'
               >
                 {translations.getStarted}
-                <ArrowRight size={20} />
+                <IconArrowRight size={20} />
               </Link>
             </motion.div>
 
@@ -273,7 +246,7 @@ export default function Index() {
                 className='inline-flex items-center justify-center gap-2 rounded-xl bg-black/40 px-8 py-3 font-semibold text-white backdrop-blur-xl hover:bg-black/50'
               >
                 {translations.signInNow}
-                <ArrowRight size={20} />
+                <IconArrowRight size={20} />
               </Link>
             </motion.div>
           </motion.div>
