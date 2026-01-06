@@ -6,6 +6,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Inter Khmer Looped Italic';
   src: url('/fonts/InterKhmerLooped-Italic.woff2') format('woff2');
@@ -19,6 +20,7 @@
 @tailwind utilities;
 
 @layer base {
+
   /**
    * Tailwind CSS theme
    * tailwind.config.ts expects the following color variables to be expressed as HSL values.
@@ -72,7 +74,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  html.dark, .dark {
+  html.dark,
+  .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -152,12 +155,15 @@
 
   /* Custom scrollbar styling */
   .scrollbar-hide {
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #cbd5e1 transparent; /* Firefox */
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: #cbd5e1 transparent;
+    /* Firefox */
   }
 
   .scrollbar-hide::-webkit-scrollbar {
-    width: 6px; /* Chrome, Safari and Opera */
+    width: 6px;
+    /* Chrome, Safari and Opera */
   }
 
   .scrollbar-hide::-webkit-scrollbar-track {
@@ -187,5 +193,11 @@
 
   .dark .scrollbar-hide::-webkit-scrollbar-thumb:hover {
     background-color: #64748b;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 }
