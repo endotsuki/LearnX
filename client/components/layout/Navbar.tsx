@@ -4,9 +4,9 @@ import { NotificationCenter } from '@/components/notifications/NotificationCente
 import { LanguageChanger } from './LanguageChanger';
 import { SearchBar } from '../ui/search-bar';
 import { useTranslations } from '@/hooks/useTranslations';
-import { Button } from '../ui/button';
 import { Avatar, AvatarImage } from '../ui/avatar';
-import { IconMoonStars, IconSunLow } from '@tabler/icons-react';
+import { AnimatedThemeToggler } from '../ui/animate-theme';
+import { Separator } from '../ui/separator';
 
 interface NavbarProps {
   user: User;
@@ -14,9 +14,6 @@ interface NavbarProps {
 }
 
 export function Navbar({ user, sidebarOpen }: NavbarProps) {
-  const { theme, toggleTheme } = useApp();
-  const translations = useTranslations();
-
   return (
     <nav className='sticky top-0 z-30 border-b border-gray-200 bg-white/50 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/50'>
       <div className={`duration-300 ease-in-out ${sidebarOpen ? 'ml-[280px]' : 'ml-20'}`}>
@@ -30,20 +27,13 @@ export function Navbar({ user, sidebarOpen }: NavbarProps) {
             <NotificationCenter userId={user.id} />
 
             {/* Theme Toggle */}
-            <Button
-              variant='outline'
-              onClick={toggleTheme}
-              size='icon'
-              title={theme === 'light' ? translations.darkMode : translations.lightMode}
-            >
-              {theme === 'light' ? <IconMoonStars size={20} /> : <IconSunLow size={20} />}
-            </Button>
+            <AnimatedThemeToggler />
 
             {/* Language Selector */}
             <LanguageChanger />
 
             {/* Divider */}
-            <div className='h-6 w-px bg-gray-200 dark:bg-slate-700'></div>
+            <Separator orientation='vertical' className='h-9' />
 
             {/* User Profile */}
             <div className='flex items-center gap-3'>
